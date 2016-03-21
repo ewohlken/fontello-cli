@@ -37,53 +37,58 @@ fontello =
 
     # Begin the download
     #
+
+    requestOptions = {}
+    requestOptions.proxy = options.proxy if options.proxy?
+
+    zipFile = needle.get("#{options.sessionUrl}/get", requestOptions, (error, response, body) ->
+      throw error if error
+    )
+
+    # If css and font directories were provided, extract the contents of
+    # the download to those directories. If not, extract the zip file as normal.
+    #
+    if options.css and options.font
+      zipFile
+        .pipe(unzip.Parse())
+        .on('entry', ((entry) ->
+          {path:pathName, type} = entry
+
+          if type is 'File'
+            dirName = path.dirname(pathName).match(/\/([^\/]*)$/)?[1]
+            fileName = path.basename pathName
+            if filename is 'config.json'
+              dirname = 'config'
+
+            switch dirName
+              when 'css'
+                cssPath = path.join options.css, fileName
+                entry.pipe(fs.createWriteStream(cssPath))
+              when 'font'
+                fontPath = path.join options.font, fileName
+                entry.pipe(fs.createWriteStream(fontPath))
+              when 'config'
+                fontPath = path.join options.font, fileName
+                entry.pipe(fs.createWriteStream(fontPath))
+              else
+                entry.autodrain()
+        ))
+        .on('finish', (->
+          print 'Install complete.\n'.green
+        ))
+
+    else
+      zipFile
+        .pipe(unzip.Extract({ path: '.' }))
+        .on('finish', (->
+          print 'Install complete.\n'.green
+        ))
+
+
+  open: (options, cb) ->
     apiRequest options, (sessionUrl) ->
-
-      requestOptions = {}
-      requestOptions.proxy = options.proxy if options.proxy?
-
-      zipFile = needle.get("#{sessionUrl}/get", requestOptions, (error, response, body) ->
-        throw error if error
-      )
-
-      # If css and font directories were provided, extract the contents of
-      # the download to those directories. If not, extract the zip file as normal.
-      #
-      if options.css and options.font
-        zipFile
-          .pipe(unzip.Parse())
-          .on('entry', ((entry) ->
-            {path:pathName, type} = entry
-
-            if type is 'File'
-              dirName = path.dirname(pathName).match(/\/([^\/]*)$/)?[1]
-              fileName = path.basename pathName
-
-              switch dirName
-                when 'css'
-                  cssPath = path.join options.css, fileName
-                  entry.pipe(fs.createWriteStream(cssPath))
-                when 'font'
-                  fontPath = path.join options.font, fileName
-                  entry.pipe(fs.createWriteStream(fontPath))
-                else
-                  entry.autodrain()
-          ))
-          .on('finish', (->
-            print 'Install complete.\n'.green
-          ))
-
-      else
-        zipFile
-          .pipe(unzip.Extract({ path: '.' }))
-          .on('finish', (->
-            print 'Install complete.\n'.green
-          ))
-
-
-  open: (options) ->
-    apiRequest options, (sessionUrl) ->
-      open sessionUrl
+      open sessionUrl ->
+        cb? sessionUrl
 
 
 module.exports = fontello
