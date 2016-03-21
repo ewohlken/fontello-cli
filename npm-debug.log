@@ -1,0 +1,103 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@3.3.12
+3 info using node@v5.3.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/www/sites/fontello-cli',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/elvis/.npm/fontello-cli/0.4.0/package.tgz not in flight; packing
+9 info lifecycle fontello-cli@0.4.0~prepublish: fontello-cli@0.4.0
+10 silly lifecycle fontello-cli@0.4.0~prepublish: no script for prepublish, continuing
+11 verbose tar pack [ '/Users/elvis/.npm/fontello-cli/0.4.0/package.tgz',
+11 verbose tar pack   '/www/sites/fontello-cli' ]
+12 verbose tarball /Users/elvis/.npm/fontello-cli/0.4.0/package.tgz
+13 verbose folder /www/sites/fontello-cli
+14 verbose addLocalTarball adding from inside cache /Users/elvis/.npm/fontello-cli/0.4.0/package.tgz
+15 silly cache afterAdd fontello-cli@0.4.0
+16 verbose afterAdd /Users/elvis/.npm/fontello-cli/0.4.0/package/package.json not in flight; writing
+17 verbose afterAdd /Users/elvis/.npm/fontello-cli/0.4.0/package/package.json written
+18 silly publish { name: 'fontello-cli',
+18 silly publish   description: 'Command line interface for Fontello.',
+18 silly publish   url: 'https://github.com/paulyoung/fontello-cli',
+18 silly publish   keywords: [ 'cli', 'fontello', 'font', 'icon' ],
+18 silly publish   version: '0.4.0',
+18 silly publish   bin: { 'fontello-cli': './bin/fontello-cli' },
+18 silly publish   main: './lib/fontello',
+18 silly publish   engines: { node: '>=0.10.x' },
+18 silly publish   dependencies:
+18 silly publish    { colors: '0.6.1',
+18 silly publish      open: '0.0.4',
+18 silly publish      commander: '2.0.0',
+18 silly publish      needle: '0.5.8',
+18 silly publish      mkdirp: '0.3.5',
+18 silly publish      unzip: '0.1.8' },
+18 silly publish   devDependencies: { 'coffee-script': '1.6.3' },
+18 silly publish   scripts: { build: 'cake build' },
+18 silly publish   repository:
+18 silly publish    { type: 'git',
+18 silly publish      url: 'git+https://github.com/paulyoung/fontello-cli.git' },
+18 silly publish   readme: '# Fontello CLI\n\n## Installation\n```sh\n$ npm install -g fontello-cli\n```\n\n## Usage\n```\n$ fontello-cli --help\n```\n\n## Development\n```\n$ npm run-script build\n```\n',
+18 silly publish   readmeFilename: 'README.md',
+18 silly publish   gitHead: '4636309636051d6b076c47d23578275bde9dcba7',
+18 silly publish   bugs: { url: 'https://github.com/paulyoung/fontello-cli/issues' },
+18 silly publish   homepage: 'https://github.com/paulyoung/fontello-cli#readme',
+18 silly publish   _id: 'fontello-cli@0.4.0',
+18 silly publish   _shasum: '6c0af37605cdf516fb15a79f10d6638b8b669528',
+18 silly publish   _from: '.' }
+19 verbose getPublishConfig undefined
+20 silly mapToRegistry name fontello-cli
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry uri https://registry.npmjs.org/fontello-cli
+24 verbose publish registryBase https://registry.npmjs.org/
+25 silly publish uploading /Users/elvis/.npm/fontello-cli/0.4.0/package.tgz
+26 verbose request uri https://registry.npmjs.org/fontello-cli
+27 verbose request sending authorization for write operation
+28 info attempt registry request try #1 at 2:14:09 PM
+29 verbose request using bearer token for auth
+30 verbose request id 4babd2d560694af9
+31 http request PUT https://registry.npmjs.org/fontello-cli
+32 http 403 https://registry.npmjs.org/fontello-cli
+33 verbose headers { 'content-type': 'application/json',
+33 verbose headers   'cache-control': 'max-age=300',
+33 verbose headers   'content-length': '104',
+33 verbose headers   'accept-ranges': 'bytes',
+33 verbose headers   date: 'Mon, 21 Mar 2016 21:14:09 GMT',
+33 verbose headers   via: '1.1 varnish',
+33 verbose headers   connection: 'keep-alive',
+33 verbose headers   'x-served-by': 'cache-lax1435-LAX',
+33 verbose headers   'x-cache': 'MISS',
+33 verbose headers   'x-cache-hits': '0',
+33 verbose headers   'x-timer': 'S1458594849.788835,VS0,VE163' }
+34 verbose request invalidating /Users/elvis/.npm/registry.npmjs.org/fontello-cli on PUT
+35 error publish Failed PUT 403
+36 verbose stack Error: You do not have permission to publish 'fontello-cli'. Are you logged in as the correct user? : fontello-cli
+36 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+36 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+36 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+36 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:198:22)
+36 verbose stack     at emitTwo (events.js:87:13)
+36 verbose stack     at Request.emit (events.js:172:7)
+36 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1082:10)
+36 verbose stack     at emitOne (events.js:82:20)
+36 verbose stack     at Request.emit (events.js:169:7)
+36 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+37 verbose statusCode 403
+38 verbose pkgid fontello-cli
+39 verbose cwd /www/sites/fontello-cli
+40 error Darwin 14.5.0
+41 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+42 error node v5.3.0
+43 error npm  v3.3.12
+44 error code E403
+45 error You do not have permission to publish 'fontello-cli'. Are you logged in as the correct user? : fontello-cli
+46 error If you need help, you may report this error at:
+46 error     <https://github.com/npm/npm/issues>
+47 verbose exit [ 1, true ]
