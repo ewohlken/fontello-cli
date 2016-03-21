@@ -8,7 +8,7 @@
     "font",
     "icon"
   ],
-  "version": "0.4.0",
+  "version": "1.0.0",
   "bin": {
     "fontello-cli": "./bin/fontello-cli-gc"
   },
@@ -24,14 +24,8 @@
     "mkdirp": "0.3.5",
     "unzip": "0.1.8"
   },
-  "devDependencies": {
-    "coffee-script": "1.6.3"
-  },
-  "scripts": {
-    "build": "./node_modules/.bin/cake build"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/paulyoung/fontello-cli.git"
+    "url": "https://github.com/ewohlken/fontello-cli.git"
   }
 }
