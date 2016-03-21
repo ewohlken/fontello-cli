@@ -1,5 +1,5 @@
 {
-  "name": "fontello-cli",
+  "name": "fontello-cli-gc",
   "description": "Command line interface for Fontello.",
   "url": "https://github.com/ewohlken/fontello-cli",
   "keywords": [
